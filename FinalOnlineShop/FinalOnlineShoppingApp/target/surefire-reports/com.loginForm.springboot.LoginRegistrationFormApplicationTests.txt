@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.loginForm.springboot.LoginRegistrationFormApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.355 s <<< FAILURE! - in com.loginForm.springboot.LoginRegistrationFormApplicationTests
+com.loginForm.springboot.LoginRegistrationFormApplicationTests  Time elapsed: 0.349 s  <<< ERROR!
+java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test
+

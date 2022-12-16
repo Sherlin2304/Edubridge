@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Shop App</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+</head>
+<body >
+	
+	<nav class="navbar navbar-expand-lg navbar-info bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Shopping App</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/profo">Home</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/profo2">Faourite List</a></li>
+						
+  <form th:action="@{/search}" method="get">
+  <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Product Name & Price" size="50" >
+  <button type="submit" class="btn btn-info" >Search</button>
+  <button type="submit" class="btn btn-info" >Reset</button>
+  </form>
+						
+			</ul>
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- End Navabr -->
+
+
+	
+				
+					<div th:if="${session.msg}">
+						<h5 class="text-center text-success" th:text="${session.msg}"></h5>
+						<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+					</div>
+					<div class="card-header">
+						<a href="load_form" class="btn btn-info">Add Products</a>
+					</div>
+
+					<div class="card-body">
+
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Id</a></th>
+									<th scope="col">Name</a></th>
+									<th scope="col">Description</th>
+									<th scope="col">Price</a></th>
+									<th scope="col">Quantity</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+
+								
+								<tr th:each="p : ${all_products}">
+									<th scope="row">[[${p.id}]]</th>
+									<td>[[${p.productName}]]</td>
+									<td>[[${p.description}]]</td>
+									<td>[[${p.price}]]</td>
+									<td>[[${p.quantity}]]</td>
+								
+								</tr>
+
+
+							</tbody>
+						</table>
+
+					</div>
+
+					
+
+
+
+					</div>
+
+			
+
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
